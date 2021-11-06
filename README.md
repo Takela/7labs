@@ -45,6 +45,56 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
         
+Сохранение в файл:
+
+public void save_skill(View view)
+    {
+        try
+        {
+
+            EditText textBox = (EditText) findViewById(R.id.editTextTextPersonName);
+            String text = textBox.getText().toString();
+            try {
+                file.createNewFile();
+            }
+            catch (IOException ex)
+            {
+                Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+            }
+            FileOutputStream fos = new FileOutputStream(file);
+            fos.write(text.getBytes());
+            fos.close();
+            Toast.makeText(this, "Текстовый файл успешно сохранён!", Toast.LENGTH_SHORT).show();
+        } catch (IOException e)
+        {
+            e.printStackTrace();
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+    
+Загрузка из файла
+
+ public void loader_skill(View view)
+    {
+        try
+        {
+            FileInputStream fin = new FileInputStream(file);
+            byte[] bytes = new byte[fin.available()];
+            fin.read(bytes);
+            String text = new String(bytes);
+            TextView textView = (TextView) findViewById(R.id.textView);
+            textView.setText(text);
+            fin.close();
+        } catch (IOException ex)
+        {
+            Toast.makeText(this, ex.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+    
+Проверить работоспособность
+
+![Альтернативный текст](/image/1.png)
+![Альтернативный текст](/image/2.png)
 
 # Гослинг
 
