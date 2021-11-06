@@ -1,6 +1,6 @@
 # Гончаров 803в1
 Создадим приложение и добавляем две кнопки и два "текста"
-```
+
 <TextView
         android:id="@+id/textView"
         android:layout_width="88dp"
